@@ -39,15 +39,14 @@ nuget-pack:
     - master
     - /^v.*$/
   script:
-    - 'echo TODO: Uncomment gitlab-ci.yml script'
-    - '#export X_CI_VERSION=$(git describe | cut -c 2-)'
-    - '#echo Publishing version $X_CI_VERSION'
-    - '#cd RobSharper.Ros.MessageParserCLI'
-    - '#dotnet pack -c Release -o ../nuget/ /p:Version=$X_CI_VERSION'
+    - 'export X_CI_VERSION=$(git describe | cut -c 2-)'
+    - 'echo Publishing version $X_CI_VERSION'
+    - 'cd RobSharper.Ros.PackageXml'
+    - 'dotnet pack -c Release -o ../nuget/ /p:Version=$X_CI_VERSION'
   artifacts:
     paths:
       - 'nuget'
-      - 'RobSharper.Ros.MessageParserCLI/bin/Release/'
+      - 'RobSharper.Ros.PackageXml/bin/Release/'
   tags:
     - docker-executor
 
@@ -65,9 +64,8 @@ nuget-pack:
       name: JR BaGet
       url: http://robv005:33333/
     script:
-      - 'echo TODO: Uncomment gitlab-ci.yml script'
-      - '#cd nuget'
-      - '#dotnet nuget push *.nupkg -s $JR_BAGET_URL -k $JR_BAGET_API_KEY'
+      - 'cd nuget'
+      - 'dotnet nuget push *.nupkg -s $JR_BAGET_URL -k $JR_BAGET_API_KEY'
     tags:
       - docker-executor
 
@@ -101,9 +99,8 @@ nuget.org:
     - master
     - /^v.*$/
   script:
-    - 'echo TODO: Uncomment gitlab-ci.yml script'
-    - '#cd nuget'
-    - '#dotnet nuget push *.nupkg -s $NUGET_ORG_URL -k $NUGET_ORG_API_KEY'
+    - 'cd nuget'
+    - 'dotnet nuget push *.nupkg -s $NUGET_ORG_URL -k $NUGET_ORG_API_KEY'
   tags:
     - docker-executor
   when: manual
