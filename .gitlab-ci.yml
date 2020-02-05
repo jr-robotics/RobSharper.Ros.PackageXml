@@ -32,7 +32,7 @@ test Package XML:
 
 # Create a versioned NuGet package
 # This task is only executed for the branches develop and master as well as version tags
-nuget pack:
+nuget-pack:
   stage: publish
   only:
     - develop
