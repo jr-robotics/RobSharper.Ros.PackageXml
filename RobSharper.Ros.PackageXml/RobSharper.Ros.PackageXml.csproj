@@ -2,6 +2,14 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <Title>ROS Package XML Parser</Title>
+        <Copyright>JOANNEUM RESEARCH Forschungsgesellschaft mbH</Copyright>
+        <Authors>breigo</Authors>
+        <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+        <PackageTags>ROS</PackageTags>
+        <Description>ROS Package XML Parser allows you to parse ROS package.xml files.</Description>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/jr-robotics/RobSharper.Ros.PackageXml.git</RepositoryUrl>
     </PropertyGroup>
 
 </Project>
