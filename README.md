@@ -83,4 +83,4 @@ Generating code with xsd.exe requires you to use Windows!
 
 ## License
 
-This project is licensed under the BSD 3-clause license. [Learn more](https://choosealicense.com/licenses/bsd-3-clause/)
+This project is licensed under the [BSD 3-clause](License) license. [Learn more](https://choosealicense.com/licenses/bsd-3-clause/)
