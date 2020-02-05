@@ -55,14 +55,16 @@ switch (version)
 }
 ```
 
-
-## How to update data contracts
+## Contributing
+### How to update data contracts
 
 Data files are generated from ROS Package XSD Files using Microsoft xsd.exe (https://docs.microsoft.com/en-us/dotnet/standard/serialization/xml-schema-definition-tool-xsd-exe).
 ROS XSD Files are located in the VX (e.g. V2) folder. 
 
 Use ```build.ps1``` powershell script to generate  a new version of the package.
-The script takes the path to xsd.exe as only argument
+The script takes the path to xsd.exe as only argument.
+
+Generating code with xsd.exe requires you to use Windows!
 
 **Example - How to generate package.xml V2 code in powerhsell:**
 
