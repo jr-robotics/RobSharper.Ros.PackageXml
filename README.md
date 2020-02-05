@@ -1,6 +1,36 @@
-# ROS Package XML Data Contract
+# ROS Package XML for .NET
+> Handle ROS package.xml files with ease
 
-## How to Use
+ROS Package XML allows you to parse ROS package.xml files.
+It supports package XML versions 1, 2 and 3.
+
+## Installation
+
+ROS Package XML for .Net is available as [NuGet Package](https://www.nuget.org/packages/RobSharper.Ros.PackageXml/).
+
+[![](https://img.shields.io/nuget/v/RobSharper.Ros.PackageXml.svg?logo=nuget)](https://www.nuget.org/packages/RobSharper.Ros.PackageXml/)
+
+
+```
+dotnet add package RobSharper.Ros.PackageXml
+``` 
+
+### Supported .NET versions
+ 
+* **.NET Standard 2.0**
+    * .NET Core 2.0 or later
+    * .NET Framework 4.6.1 or later
+    * Mono 5.4 or later
+    * Xamarin.iOS 10.14 or later
+    * Xamarin.Mac 3.8 or later
+    * Xamarin.Android 8.0 or later
+    * Universal Windows Platform 10.0.16299 or later
+
+### Dependencies
+
+* none
+
+## Usage
 
 ```CSharp
 var package = PackageXmlReader.ReadV1PackageXml(filename);
@@ -47,3 +77,8 @@ The script takes the path to xsd.exe as only argument
 - http://download.ros.org/schema/package_format1.xsd
 - http://download.ros.org/schema/package_format2.xsd
 - http://download.ros.org/schema/package_format3.xsd
+
+
+## License
+
+This project is licensed under the BSD 3-clause license. [Learn more](https://choosealicense.com/licenses/bsd-3-clause/)
