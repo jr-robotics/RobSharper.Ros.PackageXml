@@ -100,7 +100,7 @@ nuget.org:
     - /^v.*$/
   script:
     - 'cd nuget'
-    - 'dotnet nuget push *.nupkg -s $NUGET_ORG_URL -k $NUGET_ORG_API_KEY'
+    - 'dotnet nuget push *.nupkg -s https://api.nuget.org/v3/index.json -k $NUGET_ORG_API_KEY'
   tags:
     - docker-executor
   when: manual
