@@ -33,8 +33,10 @@ dotnet add package RobSharper.Ros.PackageXml
 ## Usage
 
 ```CSharp
-var package = PackageXmlReader.ReadV1PackageXml(filename);
+var package = PackageXmlReader.ReadPackageXml(filename);
 ```
+
+Or if you want to work with the inner xml elements:
 
 ```CSharp
 var version = PackageXmlReader.GetFormatVersion(filename);
