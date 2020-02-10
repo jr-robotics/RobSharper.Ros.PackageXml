@@ -22,6 +22,8 @@ namespace RobSharper.Ros.PackageXml
         
         public bool IsMetaPackage { get; private set; }
 
+        public int PackageXmlVersion { get; private set; }
+        
         private RosPackage()
         {
             
@@ -30,7 +32,7 @@ namespace RobSharper.Ros.PackageXml
         public RosPackage(string name, string version, string description,
             IEnumerable<Contact> maintainers = null, IEnumerable<Contact> authors = null,
             IEnumerable<PackageUrl> urls = null, IEnumerable<string> packageDependencies = null,
-            bool isMetaPackage = default)
+            bool isMetaPackage = default, int packageXmlVersion = default)
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
             Version = version ?? throw new ArgumentNullException(nameof(version));
@@ -40,12 +42,14 @@ namespace RobSharper.Ros.PackageXml
             Urls = urls ?? Enumerable.Empty<PackageUrl>();
             PackageDependencies = packageDependencies ?? Enumerable.Empty<string>();
             IsMetaPackage = isMetaPackage;
+            PackageXmlVersion = packageXmlVersion;
         }
 
         public static explicit operator RosPackage(V1.package package)
         {
             return new RosPackage
             {
+                PackageXmlVersion = 1,
                 Name = package.name,
                 Version = package.version,
                 Description = FormatDescription(string.Concat(package.description.Any.Select(x => x.OuterXml))),
@@ -71,6 +75,7 @@ namespace RobSharper.Ros.PackageXml
         {
             return new RosPackage
             {
+                PackageXmlVersion = 2,
                 Name = package.name,
                 Version = package.version,
                 Description = FormatDescription(string.Concat(package.description.Any.Select(x => x.OuterXml))),
@@ -96,6 +101,7 @@ namespace RobSharper.Ros.PackageXml
         {
             return new RosPackage
             {
+                PackageXmlVersion = 3,
                 Name = package.name,
                 Version = package.version,
                 Description = FormatDescription(string.Concat(package.description.Any.Select(x => x.OuterXml))),
