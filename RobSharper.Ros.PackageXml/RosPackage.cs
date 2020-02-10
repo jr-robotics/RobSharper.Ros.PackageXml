@@ -20,6 +20,8 @@ namespace RobSharper.Ros.PackageXml
         
         public IEnumerable<string> PackageDependencies { get; private set; }
         
+        public IEnumerable<string> License { get; private set; }
+        
         public bool IsMetaPackage { get; private set; }
 
         public int PackageXmlVersion { get; private set; }
@@ -30,14 +32,16 @@ namespace RobSharper.Ros.PackageXml
         }
         
         public RosPackage(string name, string version, string description,
-            IEnumerable<Contact> maintainers = null, IEnumerable<Contact> authors = null,
+            IEnumerable<string> license,
+            IEnumerable<Contact> maintainers, IEnumerable<Contact> authors = null,
             IEnumerable<PackageUrl> urls = null, IEnumerable<string> packageDependencies = null,
             bool isMetaPackage = default, int packageXmlVersion = default)
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
             Version = version ?? throw new ArgumentNullException(nameof(version));
             Description = description ?? throw new ArgumentNullException(nameof(description));
-            Maintainers = maintainers ?? Enumerable.Empty<Contact>();
+            License = license ?? throw new ArgumentNullException(nameof(license));
+            Maintainers = maintainers ?? throw new ArgumentNullException(nameof(maintainers));
             Authors = authors ?? Enumerable.Empty<Contact>();
             Urls = urls ?? Enumerable.Empty<PackageUrl>();
             PackageDependencies = packageDependencies ?? Enumerable.Empty<string>();
@@ -53,6 +57,7 @@ namespace RobSharper.Ros.PackageXml
                 Name = package.name,
                 Version = package.version,
                 Description = FormatDescription(string.Concat(package.description.Any.Select(x => x.OuterXml))),
+                License = package.license?.ToList() ?? Enumerable.Empty<string>(),
                 Authors = package.author?
                     .Select(a => new Contact(a.Value, a.email))
                     .ToList() ?? Enumerable.Empty<Contact>(),
@@ -79,6 +84,7 @@ namespace RobSharper.Ros.PackageXml
                 Name = package.name,
                 Version = package.version,
                 Description = FormatDescription(string.Concat(package.description.Any.Select(x => x.OuterXml))),
+                License = package.license?.ToList() ?? Enumerable.Empty<string>(),
                 Authors = package.author?
                     .Select(a => new Contact(a.Value, a.email))
                     .ToList() ?? Enumerable.Empty<Contact>(),
@@ -105,6 +111,10 @@ namespace RobSharper.Ros.PackageXml
                 Name = package.name,
                 Version = package.version,
                 Description = FormatDescription(string.Concat(package.description.Any.Select(x => x.OuterXml))),
+                License = package.license?
+                    .Select(l => l.Value)
+                    .Where(l => l != null)
+                    .ToList() ?? Enumerable.Empty<string>(),
                 Authors = package.author?
                     .Select(a => new Contact(a.Value, a.email))
                     .ToList() ?? Enumerable.Empty<Contact>(),

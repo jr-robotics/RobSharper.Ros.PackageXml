@@ -96,5 +96,16 @@ namespace RobSharper.Ros.PackageXml.Tests
 
             package.PackageDependencies.Should().Contain(expectedDependency);
         }
+        
+        [Theory]
+        [InlineData("PackageXmlFiles/v1.package.xml", "BSD")]
+        [InlineData("PackageXmlFiles/v2.package.xml", "Apache License 2.0")]
+        [InlineData("PackageXmlFiles/common_msgs.package.xml", "BSD")]
+        public void PackageHasLicense(string packageXmlFile, string expectedLicense)
+        {
+            var package = PackageXmlReader.ReadPackageXml(packageXmlFile);
+
+            package.License.Should().Contain(expectedLicense);
+        }
     }
 }
