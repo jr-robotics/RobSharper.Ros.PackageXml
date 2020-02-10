@@ -37,6 +37,23 @@ namespace RobSharper.Ros.PackageXml
             return version;
         }
 
+        public static RosPackage ReadPackageXml(string filename)
+        {
+            var v = GetFormatVersion(filename);
+
+            switch (v)
+            {
+                case 1:
+                    return (RosPackage) ReadV1PackageXml(filename);
+                case 2:
+                    return (RosPackage) ReadV2PackageXml(filename);
+                case 3:
+                    return (RosPackage) ReadV3PackageXml(filename);
+            }
+            
+            throw new NotSupportedException($"Package XML version {v} is not supported.");
+        }
+
         public static V1.package ReadV1PackageXml(string filename)
         {
             if (filename == null) throw new ArgumentNullException(nameof(filename));
