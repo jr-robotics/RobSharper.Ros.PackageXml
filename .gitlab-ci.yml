@@ -1,4 +1,4 @@
-image: microsoft/dotnet:latest
+image:mcr.microsoft.com/dotnet/core/sdk:2.1
 
 stages:
   - build
@@ -6,7 +6,7 @@ stages:
   - publish
   - deploy
 
-build Package XML:
+build Solution:
   stage: build
   script:
     - 'dotnet build'
