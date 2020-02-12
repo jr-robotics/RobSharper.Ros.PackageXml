@@ -22,7 +22,7 @@ test Package XML:
   coverage: '/Total\s+\|\s+(\d{0,2}\.\d{1,2}%)/'
   artifacts:
     paths:
-      - 'RobSharper.Ros.PackageXml.Tests/overage'
+      - 'RobSharper.Ros.PackageXml.Tests/coverage'
       - 'RobSharper.Ros.PackageXml.Tests/TestResults/TestResults.xml'
     reports:
       junit: 'RobSharper.Ros.PackageXml.Tests/TestResults/TestResults.xml'
